@@ -422,19 +422,6 @@ bool CanAccessFile(const char *path)
 
 Texture LoadDemoTexture()
 {
-    /* To be a bit forgiving to build different build & test processes we check 
-     * a few different paths to find the demo texture.
-     */
-    const char *pathsToTry[] = {"demo_1.png", "../demo_1.png", "examples/demo_1.png"};
-
-    for (int i = 0; i < IM_ARRAYSIZE(pathsToTry); ++i)
-    {
-        if (CanAccessFile(pathsToTry[i]))
-        {
-            return LoadTexture(pathsToTry[i]);
-        }
-    }
-    fprintf(stderr, "Unable to find demo_1.png\n");
-    exit(-1);
+    return LoadTexture("images/demo_tex_inspect.png");
 }
 } //namespace 
