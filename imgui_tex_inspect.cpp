@@ -297,7 +297,7 @@ bool BeginInspectorPanel(const char *title, ImTextureID texture, ImVec2 textureS
                 ImVec4 color = GetTexel(&inspector->Buffer, (int)mousePosTexel.x, (int)mousePosTexel.y);
 
                 char buffer[128];
-                sprintf(buffer, "UV: (%.5f, %.5f)\nTexel: (%d, %d)", mouseUV.x, mouseUV.y, (int)mousePosTexel.x, (int)mousePosTexel.y);
+                snprintf(buffer, 128, "UV: (%.5f, %.5f)\nTexel: (%d, %d)", mouseUV.x, mouseUV.y, (int)mousePosTexel.x, (int)mousePosTexel.y);
 
                 ImGui::ColorTooltip(buffer, &color.x, 0);
             }
@@ -1110,7 +1110,7 @@ void ValueText::DrawAnnotation(ImDrawList *drawList, ImVec2 texel, Transform2D t
 
     if (FormatAsFloats)
     {
-        sprintf(buffer, TextFormatString, value.x, value.y, value.z, value.w);
+        snprintf(buffer, 64, TextFormatString, value.x, value.y, value.z, value.w);
     }
     else
     {
@@ -1120,7 +1120,7 @@ void ValueText::DrawAnnotation(ImDrawList *drawList, ImVec2 texel, Transform2D t
         ImU8 g = (ImU8)Round((ImClamp(value.y, 0.0f, 1.0f)) * 255);
         ImU8 b = (ImU8)Round((ImClamp(value.z, 0.0f, 1.0f)) * 255);
         ImU8 a = (ImU8)Round((ImClamp(value.w, 0.0f, 1.0f)) * 255);
-        sprintf(buffer, TextFormatString, r, g, b, a);
+        snprintf(buffer, 64, TextFormatString, r, g, b, a);
     }
 
     // Add text to drawlist!
