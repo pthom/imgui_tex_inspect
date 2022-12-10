@@ -8,11 +8,23 @@
 #include "imgui.h"
 #include "imgui_tex_inspect.h"
 
-#include <iostream>
+// Provide texture loader for the demo
+#include "hello_imgui/hello_imgui.h"
+namespace ImGuiTexInspect
+{
+Texture LoadTexture(const char * path)
+{
+    auto textureId = HelloImGui::ImTextureIdFromAsset(path);
+    Texture r;
+    r.size = ImVec2(512.f, 512.f); // This function is only by used the demo, which uses a 51x512 image
+    r.texture = textureId;
+    return r;
+}
+}
+
 
 namespace ImGuiTexInspect
 {
-
 Texture testTex;
 Texture fontTexture;
 bool testInitted = false;
