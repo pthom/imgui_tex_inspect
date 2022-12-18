@@ -548,12 +548,12 @@ void DrawColorMatrixEditor()
         for (int j = 0; j < 4; ++j)
         {
             ImGui::PushID(j);
-            ImGui::SetNextItemWidth(50);
+            ImGui::SetNextItemWidth(ImGui::GetFontSize() * 3.5);
             ImGui::DragFloat("##f", &shaderOptions->ColorTransform[j * 4 + i], dragSpeed);
             ImGui::PopID();
             ImGui::SameLine();
         }
-        ImGui::SetNextItemWidth(50);
+        ImGui::SetNextItemWidth(ImGui::GetFontSize() * 3.5);
         ImGui::DragFloat("##offset", &shaderOptions->ColorOffset[i], dragSpeed);
         ImGui::PopID();
     }
