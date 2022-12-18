@@ -42,6 +42,11 @@ Texture LoadDemoTexture();
 void DemoInit();
 
 
+float kDpi()
+{
+    return ImGui::GetFontSize() / 14.5f;
+}
+
 //-------------------------------------------------------------------------
 // [SECTION] EXAMPLE USAGES
 //-------------------------------------------------------------------------
@@ -86,7 +91,7 @@ void Demo_ColorFilters()
     ImGuiTexInspect::EndInspectorPanel();
 
     // Now some ordinary ImGui elements to provide some explanation
-    ImGui::BeginChild("Controls", ImVec2(600, 100));
+    ImGui::BeginChild("Controls", ImVec2(600* kDpi(), 100* kDpi()));
     ImGui::TextWrapped("Basics:");
     ImGui::BulletText("Use mouse wheel to zoom in and out.  Click and drag to pan.");
     ImGui::BulletText("Use the demo select buttons at the top of the window to explore");
@@ -99,7 +104,7 @@ void Demo_ColorFilters()
      * texture inspector
      **/
     ImGuiTexInspect::DrawColorChannelSelector();
-    ImGui::SameLine(200);
+    ImGui::SameLine(200* kDpi());
     ImGuiTexInspect::DrawGridEditor();
 
     ImGui::Separator();
@@ -136,9 +141,9 @@ void Demo_ColorMatrix()
 
     // Provide some presets that can be used to set the ColorMatrix for example purposes
     ImGui::BeginGroup();
-    ImGui::PushItemWidth(200);
+    ImGui::PushItemWidth(200* kDpi());
     ImGui::Indent(50);
-    const ImVec2 buttonSize = ImVec2(160, 0);
+    const ImVec2 buttonSize = ImVec2(160* kDpi(), 0);
     ImGui::Text("Example Presets:");
     // clang-format off
     if (ImGui::Button("Negative", buttonSize))
@@ -235,7 +240,7 @@ void Demo_WrapAndFilter()
     ImGuiTexInspect::CurrentInspector_SetFlags(flags, ~flags);
     ImGuiTexInspect::EndInspectorPanel();
 
-    ImGui::BeginChild("Controls", ImVec2(600, 0));
+    ImGui::BeginChild("Controls", ImVec2(600* kDpi(), 0));
     ImGui::TextWrapped("The following option can be enabled to render texture outside of the [0,1] UV range, what you actually "
                        "see outside of this range will depend on the mode of the texture. For example you may see the texture repeat, or "
                        "it might be clamped to the colour of the edge pixels.\nIn this demo the texture is set to wrap.");
@@ -319,7 +324,7 @@ void Demo_TextureAnnotations()
     ImGuiTexInspect::EndInspectorPanel();
 
     // Checkboxes to toggle each type of annotation on and off
-    ImGui::BeginChild("Controls", ImVec2(600, 0));
+    ImGui::BeginChild("Controls", ImVec2(600* kDpi(), 0));
     ImGui::Checkbox("Arrow (Hint: zoom in on the normal-map part of the texture)", &annotationEnabled_arrow);
     ImGui::Checkbox("Value Text",                                                  &annotationEnabled_valueText);
     ImGui::Checkbox("Custom Annotation Example",                                   &annotationEnabled_customExample);
@@ -350,8 +355,8 @@ void ShowDemoWindow()
         DemoInit();
     }
 
-    ImGui::SetNextWindowPos(ImVec2(50, 50), ImGuiCond_FirstUseEver);
-    ImGui::SetNextWindowSize(ImVec2(1000, 1000), ImGuiCond_FirstUseEver);
+    ImGui::SetNextWindowPos(ImVec2(50* kDpi(), 50* kDpi()), ImGuiCond_FirstUseEver);
+    ImGui::SetNextWindowSize(ImVec2(1000* kDpi(), 1000* kDpi()), ImGuiCond_FirstUseEver);
 
     struct DemoConfig
     {
@@ -384,7 +389,7 @@ void ShowDemoWindow()
             {
                 ImGui::SameLine();
             }
-            if (ImGui::Button(demos[i].buttonName, ImVec2(140, 60)))
+            if (ImGui::Button(demos[i].buttonName, ImVec2(140* kDpi(), 60* kDpi())))
             {
                 selectedDemo = i;
             }
