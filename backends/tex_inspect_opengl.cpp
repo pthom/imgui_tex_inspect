@@ -3,7 +3,7 @@
 #if defined(_MSC_VER) && !defined(_CRT_SECURE_NO_WARNINGS)
 #define _CRT_SECURE_NO_WARNINGS
 #endif
-#if defined EMSCRIPTEN && defined IMGUI_TEX_INSPECT_FLOAT_READ_ENABLED
+#if defined __EMSCRIPTEN__ && defined IMGUI_TEX_INSPECT_FLOAT_READ_ENABLED
 #warning "Float texture read back is disabled on Emscripten"
 #undef IMGUI_TEX_INSPECT_FLOAT_READ_ENABLED
 #endif
