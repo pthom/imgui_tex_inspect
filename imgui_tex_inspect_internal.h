@@ -78,7 +78,7 @@ struct ShaderOptions
 
 struct Inspector
 {
-    ImGuiID ID;
+    ImGuiID ID = 0;
     bool Initialized = false;
 
     // Texture
