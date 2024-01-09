@@ -38,6 +38,10 @@
 #include <stdint.h>     // intptr_t
 #endif
 
+#ifdef __APPLE__
+#include <TargetConditionals.h>
+#endif
+
 // GL includes
 #if defined(IMGUI_IMPL_OPENGL_ES2)
 #include <GLES2/gl2.h>
