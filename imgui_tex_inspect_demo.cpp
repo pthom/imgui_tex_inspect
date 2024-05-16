@@ -16,7 +16,7 @@ Texture LoadTexture(const char * path)
 {
     auto textureId = HelloImGui::ImTextureIdFromAsset(path);
     Texture r;
-    r.size = ImVec2(512.f, 512.f); // This function is only by used the demo, which uses a 51x512 image
+    r.size = ImVec2(256.f, 256.f); // This function is only by used the demo, which uses a 51x512 image
     r.texture = textureId;
     return r;
 }
