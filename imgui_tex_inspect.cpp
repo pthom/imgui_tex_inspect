@@ -95,7 +95,7 @@ void DestroyContext(Context *ctx)
         GContext = NULL;
     }
 
-    for (ImGuiStorage::ImGuiStoragePair &pair : ctx->Inspectors.Data)
+    for (ImGuiStoragePair &pair : ctx->Inspectors.Data)
     {
         Inspector *inspector = (Inspector *)pair.val_p;
         if (inspector)
