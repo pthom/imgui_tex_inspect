@@ -26,7 +26,6 @@ Texture LoadTexture(const char * path)
 namespace ImGuiTexInspect
 {
 Texture testTex;
-Texture fontTexture;
 bool testInitted = false;
 
 //-------------------------------------------------------------------------
@@ -416,9 +415,6 @@ void DemoInit()
     ImGuiTexInspect::CreateContext();
 
     ImGuiIO &io = ImGui::GetIO();
-    fontTexture.texture = io.Fonts->TexID;
-    fontTexture.size = ImVec2((float)io.Fonts->TexWidth, (float)io.Fonts->TexHeight);
-
     testTex = LoadDemoTexture();
     testInitted = true;
 }
