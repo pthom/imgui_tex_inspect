@@ -273,7 +273,11 @@ bool BeginInspectorPanel(const char *title, ImTextureID texture, ImVec2 textureS
         UpdateShaderOptions(inspector);
         inspector->CachedShaderOptions = inspector->ActiveShaderOptions;
         ImGui::Image(texture, viewSize, uv0, uv1);
+#if IMGUI_VERSION_NUM < 19276
         ImGui::GetWindowDrawList()->AddCallback(ImDrawCallback_ResetRenderState, nullptr);
+#else
+        ImGui::GetWindowDrawList()->AddCallback(ImGui::GetPlatformIO().DrawCallback_ResetRenderState, nullptr);
+#endif
 
         /* Matrices for going back and forth between texel coordinates in the 
          * texture and screen coordinates based on where texture is drawn. 
